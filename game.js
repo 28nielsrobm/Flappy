@@ -2,7 +2,7 @@ const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
 // ===== GAME SETTINGS (easy to tweak) =====
-const GRAVITY = 0.3;
+const GRAVITY = 0.4;
 const JUMP = -8;
 const PIPE_WIDTH = 60;
 const PIPE_GAP = 200;
