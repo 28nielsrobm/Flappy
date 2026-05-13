@@ -3,9 +3,12 @@ const ctx = canvas.getContext("2d");
 
 // ===== GAME SETTINGS (easy to tweak) =====
 const GRAVITY = 0.4;
-const JUMP = -8;
+// Make the jump height smaller (less negative, weaker jump)
+const JUMP = -6;
+// Keep pipe width the same
 const PIPE_WIDTH = 60;
-const PIPE_GAP = 200;
+// Stretch the gap between the pipes to be further apart
+const PIPE_GAP = 260;
 const PIPE_SPEED = 2;
 
 // ===== PLAYER =====
@@ -101,9 +104,28 @@ function update() {
 function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  // Bird
+  // Improved bird: body (yellow ellipse), beak (orange triangle), eye (black circle)
+  // Body
+  ctx.save();
+  ctx.translate(bird.x + bird.size / 2, bird.y + bird.size / 2);
+  ctx.beginPath();
+  ctx.ellipse(0, 0, bird.size, bird.size * 0.7, 0, 0, Math.PI * 2);
   ctx.fillStyle = "yellow";
-  ctx.fillRect(bird.x, bird.y, bird.size, bird.size);
+  ctx.fill();
+  // Beak
+  ctx.beginPath();
+  ctx.moveTo(bird.size * 0.85, 0);
+  ctx.lineTo(bird.size * 1.25, -5);
+  ctx.lineTo(bird.size * 1.25, +5);
+  ctx.closePath();
+  ctx.fillStyle = "orange";
+  ctx.fill();
+  // Eye
+  ctx.beginPath();
+  ctx.arc(bird.size * 0.4, -bird.size * 0.2, bird.size * 0.13, 0, Math.PI * 2);
+  ctx.fillStyle = "black";
+  ctx.fill();
+  ctx.restore();
 
   // Pipes
   ctx.fillStyle = "green";
