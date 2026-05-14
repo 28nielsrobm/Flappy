@@ -8,7 +8,7 @@ const JUMP = -6;
 // Keep pipe width the same
 const PIPE_WIDTH = 60;
 // Stretch the gap between the pipes to be further apart
-const PIPE_GAP = 260;
+const PIPE_GAP = 190;
 const PIPE_SPEED = 2;
 
 // ===== PLAYER =====
